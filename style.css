@@ -1,0 +1,23 @@
+.snake{
+    width:100%;
+    height:600px;
+    background: black;
+    margin: 0px;
+    font-size: 0px;
+}
+
+.box{
+    width: 2%;
+    border: solid 1px white;
+    height: 18px;
+    display: inline-block;
+    margin: 0px;
+    font-size: 0px;
+}
+.snake_body{
+    background: red;
+}
+
+.mouse{
+    background: pink;
+}
