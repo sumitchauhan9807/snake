@@ -17,7 +17,16 @@
     
   </div>
 </div>
-
+<audio controls autoplay id="snakehit" style="display: none;">
+  <source src="assets/snakehit.mp3" type="audio/mp3">
+  <source src="horse.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<audio controls autoplay id="snakedead" style="display: none;">
+  <source src="assets/snakedead.mp3" type="audio/mp3">
+  <source src="horse.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 </body>
 
 
@@ -26,6 +35,9 @@
 <script src="script.js"></script>
 <script>
 $(document).ready(function(){
+
+
+
    window.mousePos;
    const snakeBoard =  new SnakeBoard($(".snake"));
    

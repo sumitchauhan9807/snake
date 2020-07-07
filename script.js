@@ -4,31 +4,47 @@ class Snake{
         this.noOfBoxes = boardData.noOfBoxes
         this.boxesOnX = boardData.boxesOnX;
         this.board = board;
-        this.snake = [200,202
+        this.snake = [200,202,203,204,205
         ]
         this.renderSnake()
         this.direction = -50
         setInterval(() => {
             this.moveSnake()    
-            console.log(window.mousePos,"mousePos")
-        }, 1000/10);
+        //    console.log(window.mousePos,"mousePos")
+        }, 1000/20);
         this.setControls()
     }
     setRulezz(){
         var snakeHead = this.snake[this.snake.length-1];
         if(snakeHead == window.mousePos){
-            this.snake.push(this.snake[this.snake.length-1] + 1)
+            console.log(this.snake)
+            console.log(this.snake[this.snake.length-1],"this.snake[this.snake.length-1]")
+          //  alert('mouse')
+          document.getElementById("snakehit").play().then(()=>{
+              console.log('palyed')
+          });
+          
+             this.snake.push(this.snake[this.snake.length-1] + this.direction)
+            
         }
-        if(this.hasDuplicates(this.snake)){
-            alert('game over')
+        this.checkCollision()
+        
+    }
+        checkCollision(){
+            var snakeArr = [...this.snake];
+            let snakeHead = this.snake[this.snake.length-1];
+
+            snakeArr.pop();
+            if(snakeArr.includes(snakeHead)){
+                document.getElementById("snakedead").play()
+                alert('game over')
+                location.reload()
+            }
+          
         }
-    }
-     hasDuplicates(array) {
-        return (new Set(array)).size !== array.length;
-    }
+    
     moveSnake(){
         this.setRulezz();
-        console.log(this.snake[this.snake.length-1],"snalke")
       if(this.direction == 1){
             var snakeHead = this.snake[this.snake.length-1];
            
@@ -131,13 +147,13 @@ class SnakeBoard{
             window.mousePos = mouseBox;
             $(".box").removeClass('mouse')
             $(".box:nth-child("+mouseBox+")").addClass("mouse")
-        setInterval(()=>{
-            let mouseBox = Math.floor(Math.random() * this.noOfBoxes);
-            console.log(mouseBox);
-            window.mousePos = mouseBox;
-            $(".box").removeClass('mouse')
-            $(".box:nth-child("+mouseBox+")").addClass("mouse")
-        },10000)  
+        // setInterval(()=>{
+        //     let mouseBox = Math.floor(Math.random() * this.noOfBoxes);
+        //     console.log(mouseBox);
+        //     window.mousePos = mouseBox;
+        //     $(".box").removeClass('mouse')
+        //     $(".box:nth-child("+mouseBox+")").addClass("mouse")
+        // },10000)  
     }
 
     calc(){
